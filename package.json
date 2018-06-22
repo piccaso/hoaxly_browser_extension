@@ -1,0 +1,21 @@
+{
+  "name": "hoaxly-browser-plugin",
+  "version": "0.0.1",
+  "description": "hoaxly-browser-plugin",
+  "scripts": {
+    "watch": "webpack --config webpack/webpack.dev.js --watch",
+    "build": "webpack --config webpack/webpack.prod.js"
+  },
+  "author": "me",
+  "devDependencies": {
+    "@types/chrome": "~0.0.69",
+    "ts-loader": "~4.2.0",
+    "typescript": "~2.8.1",
+    "webpack": "~4.5.0",
+    "webpack-cli": "~2.0.14",
+    "webpack-merge": "~4.1.2",
+    "vue": "^2.5.16",
+    "vue-loader": "^15.2.4",
+    "vue-template-compiler": "^2.5.16"
+  }
+}
