@@ -7,7 +7,7 @@
                 <a v-bind:href="review.url">
                     {{review.title}}
                 </a>
-                ({{review.reviewRating.simplifiedRatingValue}})
+                ({{review.reviewRating.normalizedAlternateName}})
             </li>
         </ul>
     </div>
