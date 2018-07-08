@@ -2,8 +2,8 @@
   "manifest_version": 2,
 
   "name": "hoax.ly",
-  "description": "hoax.ly will potentially warn you if you are looking at fake news",
-  "version": "0.0.1",
+  "description": "The hoax.ly browser extension will warn you when you browse questionable or maybe misleading content.",
+  "version": "0.0.2",
   "icons": {
     "16": "icon16.png", "128": "icon180.png"
   },

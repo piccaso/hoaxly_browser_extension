@@ -10,18 +10,69 @@
           font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
           font-weight: 300;
           color: #20002d;
-          padding: 0.2rem;
+          padding: 0.5rem;
+          background-color: #fbfbfb;
         }
         a, a:visited, a:active {
           color: #60a;
         }
+        .header {
+          text-align: center;
+          padding-bottom: 0.25rem;
+        }
+        .header img {
+          margin-bottom: 0.5rem;
+        }
+        .reviews {
+          padding-bottom: 0.5rem;
+        }
+        .reviews__noresult {
+          text-align: center;
+        }
+        .footer {
+          text-align: center;
+          color: #d4d4d4;
+        }
+        .footer a,
+        .footer a:active,
+        .footer a:visited {
+          color: #d4d4d4;
+        }
+        small,
+        .small {
+          font-size: 0.8rem;
+          font-size: 12px;
+        }
+        hr {
+          width: 50%;
+          height: 1px;
+          background: #d4d4d4;
+          margin-top: 0.5rem;
+          margin-bottom: 0.25rem;
+          border: 0;
+        }
     </style>
   </head>
   <body>
-    <div id="app">
-      <!-- default static content, see: popupComponent.vue -->
-      No reviews available for this url.
+    <div class="header">
+      <img src="icon180.png" width="80px" height="80px" alt="hoax.ly logo" />
+      <hr />
     </div>
+    <div id="app" class="reviews">
+      <!-- default static content, see: popupComponent.vue -->
+      <div class="reviews__noresult">
+        <p>No reviews available for this page.</p>
+        <p class="small">How about doing a fact-check yourself?</p>
+      </div>
+    </div>
+    <div class="footer">
+      <hr />
+      <p class="small">
+        <a href="https://hoax.ly/browser-extension.html">About</a> | <a href="https://hoax.ly/terms_of_use.html">Terms of Use</a> | <a href="https://hoax.ly/privacy_policy.html">Privacy Policy</a> | <a href="https://hoax.ly/legal_notice.html">Legal Notice</a>
+      </p>
+      <p class="small">100% Open Source, supported by netidee.at</p>
+    </div>
+
     <script src="js/popup.js"></script>
   </body>
 </html>
