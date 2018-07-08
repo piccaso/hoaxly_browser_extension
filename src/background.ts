@@ -14,7 +14,7 @@ browser.webNavigation.onCommitted.addListener(details => {
         // TODO: is this a good idea?
         // calculating the average of normalizedAlternateName?
         // /...Name/ does not sould like a number!
-        let rating = 0, ratingCnt = 0;
+        let rating = 0, ratingCnt = 0, ratingText = '-';
         if(response.reviews) response.reviews.forEach(rev => {
             if(rev.reviewRating && rev.reviewRating.RatingValue){
                 rating += rev.reviewRating.RatingValue;
@@ -35,15 +35,18 @@ browser.webNavigation.onCommitted.addListener(details => {
 
             // - .. red .. 1.5 .. yellow .. 2.5 .. green .. +
             let badgeColor = color.yellow;
-            if(avgRating <= 1.9){
-                badgeColor = color.red
-            }else if(avgRating >= 2.5){
-                badgeColor = color.green
+            if(avgRating <= 1.9) {
+                badgeColor = color.red;
+                ratingText = '!';
+
+            } else if(avgRating >= 2.5) {
+                badgeColor = color.green;
+                ratingText = 'OK';
             }
 
             browser.browserAction.setBadgeText({
                 tabId : details.tabId,
-                text : avgRating.toFixed(1),
+                text : ratingText,
             });
 
             browser.browserAction.setBadgeBackgroundColor({
