@@ -16,8 +16,8 @@ browser.webNavigation.onCommitted.addListener(details => {
         // /...Name/ does not sould like a number!
         let rating = 0, ratingCnt = 0;
         if(response.reviews) response.reviews.forEach(rev => {
-            if(rev.reviewRating && rev.reviewRating.simplifiedRatingValue){
-                rating += rev.reviewRating.simplifiedRatingValue;
+            if(rev.reviewRating && rev.reviewRating.RatingValue){
+                rating += rev.reviewRating.RatingValue;
                 ratingCnt++;
             }
         });
@@ -31,11 +31,11 @@ browser.webNavigation.onCommitted.addListener(details => {
                 green: <color>[0,100,0,50],
                 yellow: <color>[200,180,100,50],
                 red: <color>[150,0,0,100],
-            }
+            };
 
             // - .. red .. 1.5 .. yellow .. 2.5 .. green .. +
             let badgeColor = color.yellow;
-            if(avgRating <= 1.5){
+            if(avgRating <= 1.9){
                 badgeColor = color.red
             }else if(avgRating >= 2.5){
                 badgeColor = color.green
@@ -59,8 +59,8 @@ browser.webNavigation.onCommitted.addListener(details => {
         // })
 
         //// maybe? - needs 'notifications' permission
-        // new Notification("Woot!", {
-        //     body: `the website you are watching might be sthitty... \n${details.url}`,
+        // new Notification("Attention!", {
+        //     body: `the website you are watching might be questionable... \n${details.url}`,
         // })
     })
 });
