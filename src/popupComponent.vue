@@ -1,10 +1,10 @@
 <template>
     <div id="app">
-        We have found the following reviews for this url:
+        We have found the following reviews for this page:
         <ul>
             <li v-for="(review,i) in apiResponse.reviews" v-bind:key="i">
                 {{review.publisher.name}}:
-                <a v-bind:href="review.url">
+                <a v-bind:href="review.url" title="Read the review">
                     {{review.title}}
                 </a>
                 ({{review.reviewRating.normalizedAlternateName}})

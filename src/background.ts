@@ -16,8 +16,8 @@ browser.webNavigation.onCommitted.addListener(details => {
         // /...Name/ does not sould like a number!
         let rating = 0, ratingCnt = 0, ratingText = '-';
         if(response.reviews) response.reviews.forEach(rev => {
-            if(rev.reviewRating && rev.reviewRating.RatingValue){
-                rating += rev.reviewRating.RatingValue;
+            if(rev.reviewRating && rev.reviewRating.ratingValue){
+                rating += rev.reviewRating.ratingValue;
                 ratingCnt++;
             }
         });
