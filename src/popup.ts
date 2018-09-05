@@ -23,7 +23,7 @@ class Popup {
     // check if the response has reviews
     // not much error handling here...
     // if something fails the default content is displayed (see popup.html)
-    apiResponse && apiResponse.reviews && apiResponse.reviews.length > 0 && new Vue({
+    apiResponse && apiResponse.data && apiResponse.data.reviews && apiResponse.data.reviews.length > 0 && new Vue({
       el: '#app',
       render: h=> h(popupComponent, {props: {apiResponse:apiResponse}}),
       mounted: function(){ this.$nextTick(Popup.enableLinks); },

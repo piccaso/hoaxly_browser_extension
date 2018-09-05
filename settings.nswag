@@ -1,8 +1,10 @@
 ﻿{
   "runtime": "Default",
+  "defaultVariables": null,
   "swaggerGenerator": {
     "fromSwagger": {
-      "url": "https://api.hoax.ly/schema.json",
+      "json": "{\r\n  \"swagger\": \"2.0\",\r\n  \"info\": {\r\n    \"version\": \"3.0.0\",\r\n    \"title\": \"Hoaxly Api\"\r\n  },\r\n  \"paths\": {\r\n    \"/api/check\": {\r\n      \"get\": {\r\n        \"tags\": [\r\n          \"Hoaxly\"\r\n        ],\r\n        \"operationId\": \"ApiCheckGet\",\r\n        \"consumes\": [],\r\n        \"produces\": [\r\n          \"text/plain\",\r\n          \"application/json\",\r\n          \"text/json\"\r\n        ],\r\n        \"parameters\": [\r\n          {\r\n            \"name\": \"claimUrl\",\r\n            \"in\": \"query\",\r\n            \"required\": true,\r\n            \"type\": \"string\"\r\n          }\r\n        ],\r\n        \"responses\": {\r\n          \"200\": {\r\n            \"description\": \"An item with reviews\",\r\n            \"schema\": {\r\n              \"$ref\": \"#/definitions/ClaimReviewResponse\"\r\n            },\r\n            \"headers\": {\r\n              \"x-next\": {\r\n                \"type\": \"string\",\r\n                \"description\": \"A link to the next page of responses\"\r\n              }\r\n            }\r\n          },\r\n          \"404\": {\r\n            \"description\": \"no results found\",\r\n            \"schema\": {\r\n              \"$ref\": \"#/definitions/NotFoundResponse\"\r\n            }\r\n          },\r\n          \"400\": {\r\n            \"description\": \"bad request\",\r\n            \"schema\": {\r\n              \"$ref\": \"#/definitions/BadRequestResponse\"\r\n            }\r\n          },\r\n          \"default\": {\r\n            \"description\": \"unexpected error\",\r\n            \"schema\": {\r\n              \"$ref\": \"#/definitions/ErrorResponse\"\r\n            }\r\n          }\r\n        }\r\n      }\r\n    }\r\n  },\r\n  \"definitions\": {\r\n    \"ErrorResponse\": {\r\n      \"required\": [\r\n        \"code\",\r\n        \"message\"\r\n      ],\r\n      \"properties\": {\r\n        \"code\": {\r\n          \"type\": \"integer\",\r\n          \"format\": \"int32\"\r\n        },\r\n        \"message\": {\r\n          \"type\": \"string\"\r\n        }\r\n      }\r\n    },\r\n    \"NotFoundResponse\": {\r\n      \"required\": [\r\n        \"code\",\r\n        \"message\"\r\n      ],\r\n      \"properties\": {\r\n        \"code\": {\r\n          \"type\": \"integer\",\r\n          \"format\": \"int32\"\r\n        },\r\n        \"message\": {\r\n          \"type\": \"string\"\r\n        }\r\n      }\r\n    },\r\n    \"BadRequestResponse\": {\r\n      \"required\": [\r\n        \"code\",\r\n        \"message\"\r\n      ],\r\n      \"properties\": {\r\n        \"code\": {\r\n          \"type\": \"integer\",\r\n          \"format\": \"int32\"\r\n        },\r\n        \"message\": {\r\n          \"type\": \"string\"\r\n        }\r\n      }\r\n    },\r\n    \"ClaimReviewResponse\": {\r\n      \"properties\": {\r\n        \"status\": {\r\n          \"type\": \"integer\",\r\n          \"format\": \"int32\"\r\n        },\r\n        \"data\": {\r\n          \"type\": \"object\",\r\n          \"required\": [\r\n              \"url\"\r\n          ],\r\n          \"properties\": {\r\n            \"id\": {\r\n              \"type\": \"integer\",\r\n              \"format\": \"int64\"\r\n                },\r\n    \t\t    \"url\": {\r\n    \t\t\t    \"type\": \"string\",\r\n    \t\t\t    \"format\": \"url\"\r\n    \t\t    },\r\n    \t\t    \"claimPublisherName\": {\r\n    \t\t\t    \"type\": \"string\"\r\n    \t\t    },\r\n    \t\t    \"claimReviewed\": {\r\n    \t\t\t    \"type\": \"string\"\r\n    \t\t    },\r\n    \t\t    \"reviews\": {\r\n    \t\t\t    \"type\": \"array\",\r\n    \t\t\t    \"items\": {\r\n                \"$ref\": \"#/definitions/Review\"\r\n    \t\t\t    }\r\n    \t\t    }\r\n    \t\t  }\r\n        }\r\n      }\r\n    },\r\n    \"Review\": {\r\n      \"type\": \"object\",\r\n      \"properties\": {\r\n        \"ratings\": {\r\n          \"type\": \"object\",\r\n          \"properties\": {\r\n            \"originalRatingValue\": {\r\n              \"type\": \"integer\"\r\n            },\r\n            \"alternateName\": {\r\n              \"type\": \"string\"\r\n            },\r\n            \"simplifiedRatingValue\": {\r\n              \"type\": \"integer\"\r\n            },\r\n            \"bestRating\": {\r\n              \"type\": \"integer\"\r\n            },\r\n            \"worstRating\": {\r\n              \"type\": \"integer\"\r\n            },\r\n            \"ratingValue\": {\r\n              \"type\": \"integer\"\r\n            }\r\n          }\r\n        },\r\n        \"title\": {\r\n          \"type\": \"string\"\r\n        },\r\n        \"url\": {\r\n          \"type\": \"string\"\r\n        },\r\n        \"datePublished\": {\r\n          \"type\": \"string\"\r\n        },\r\n        \"dateModified\": {\r\n          \"type\": \"string\"\r\n        },\r\n        \"publisher\": {\r\n          \"type\": \"object\",\r\n          \"properties\": {\r\n            \"name\": {\r\n              \"type\": \"string\"\r\n            },\r\n            \"logo\": {\r\n              \"type\": \"string\"\r\n            },\r\n            \"type\": {\r\n              \"type\": \"string\"\r\n            },\r\n            \"url\": {\r\n              \"type\": \"string\"\r\n            }\r\n          }\r\n        },\r\n        \"Authors\": {\r\n          \"type\": \"object\",\r\n          \"properties\": {\r\n            \"name\": {\r\n              \"type\": \"string\"\r\n            },\r\n            \"url\": {\r\n              \"type\": \"string\"\r\n            }\r\n          }\r\n        },\r\n        \"summary\": {\r\n          \"type\": \"string\"\r\n        },\r\n        \"language\": {\r\n          \"type\": \"string\"\r\n        },\r\n        \"id\": {\r\n    \t  \"type\": \"integer\",\r\n    \t  \"format\": \"int64\"\r\n    \t}\r\n      }\r\n    }\r\n  }\r\n}\r\n",
+      "url": "",
       "output": null
     }
   },
@@ -23,10 +25,15 @@
       "generateClientClasses": true,
       "generateClientInterfaces": false,
       "generateOptionalParameters": false,
+      "exportTypes": true,
       "wrapDtoExceptions": false,
+      "clientBaseClass": null,
       "wrapResponses": false,
+      "wrapResponseMethods": [],
       "generateResponseClasses": true,
       "responseClass": "SwaggerResponse",
+      "protectedMethods": [],
+      "configurationClass": null,
       "useTransformOptionsMethod": false,
       "useTransformResultMethod": false,
       "generateDtoTypes": true,
@@ -34,6 +41,9 @@
       "markOptionalProperties": true,
       "generateCloneMethod": false,
       "typeStyle": "Class",
+      "classTypes": [],
+      "extendedClasses": [],
+      "extensionCode": null,
       "generateDefaultValues": true,
       "excludedTypeNames": [],
       "handleReferences": false,
@@ -43,6 +53,12 @@
       "useGetBaseUrlMethod": false,
       "baseUrlTokenName": "API_BASE_URL",
       "queryNullValue": "",
+      "templateDirectory": null,
+      "typeNameGeneratorType": null,
+      "propertyNameGeneratorType": null,
+      "enumNameGeneratorType": null,
+      "serviceHost": null,
+      "serviceSchemes": null,
       "output": "src/hoaxlyRestClient.ts"
     }
   }

@@ -11,9 +11,9 @@ browser.webNavigation.onCommitted.addListener(details => {
     api.check(details.url).then(response => {
 
         let rating = 0, ratingCnt = 0, ratingText = '-';
-        if(response.reviews) response.reviews.forEach(rev => {
-            if(rev.reviewRating && rev.reviewRating.ratingValue){
-                rating += rev.reviewRating.ratingValue;
+        if(response.data && response.data.reviews) response.data.reviews.forEach(rev => {
+            if(rev.ratings && rev.ratings.ratingValue != undefined){
+                rating += rev.ratings.ratingValue;
                 ratingCnt++;
             }
         });

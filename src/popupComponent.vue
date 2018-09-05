@@ -2,12 +2,12 @@
     <div id="app">
         We have found the following reviews for this page:
         <ul>
-            <li v-for="(review,i) in apiResponse.reviews" v-bind:key="i">
+            <li v-for="(review,i) in apiResponse.data.reviews" v-bind:key="i">
                 {{review.publisher.name}}:
                 <a v-bind:href="review.url" title="Read the review">
                     {{review.title}}
                 </a>
-                ({{review.reviewRating.normalizedAlternateName}})
+                ({{review.ratings.alternateName}})
             </li>
         </ul>
     </div>
